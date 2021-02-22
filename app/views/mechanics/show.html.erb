@@ -1,0 +1,5 @@
+<%= @mechanic.name %>
+<%= @mechanic.years_of_experience %>
+<% @mechanic.working_on_rides.each do |ride| %>
+  <%= ride.name %>
+<% end %>

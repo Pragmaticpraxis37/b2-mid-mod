@@ -5,4 +5,8 @@ class Mechanic < ApplicationRecord
   def self.avg_years_exp
     average("years_of_experience").to_i
   end
+
+  def working_on_rides
+    rides.select("name")
+  end
 end
