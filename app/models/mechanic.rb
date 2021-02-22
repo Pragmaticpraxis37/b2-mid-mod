@@ -11,6 +11,6 @@ class Mechanic < ApplicationRecord
   end
 
   def open_rides
-    rides.where("open = ?", true)
+    rides.where("open = ?", true).order("thrill_rating DESC")
   end
 end

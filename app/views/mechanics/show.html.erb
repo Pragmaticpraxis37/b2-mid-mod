@@ -3,10 +3,16 @@
 <% @mechanic.working_on_rides.each do |ride| %>
   <%= ride.name %>
 <% end %>
-
+<br>
 <section id="open_rides">
+  <%= "Open Rides:" %><br>
   <% @mechanic.open_rides.each do |ride| %>
-    <%= binding.pry %>
     <%= ride.name %><br>
   <% end %>
 </section>
+
+<%= form_with url: "/mechanics/#{@mechanic.id}", method: :patch do |f| %>
+  <%= f.label :q, "Add a ride" %>
+  <%= f.text_field :q, id: :q%>
+  <%= f.submit "Ride ID" %>
+<% end %>
