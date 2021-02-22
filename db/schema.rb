@@ -27,32 +27,12 @@ ActiveRecord::Schema.define(version: 2021_02_22_163425) do
     t.integer "years_of_experience"
   end
 
-  create_table "professor_students", force: :cascade do |t|
-    t.bigint "student_id"
-    t.bigint "professor_id"
-    t.index ["professor_id"], name: "index_professor_students_on_professor_id"
-    t.index ["student_id"], name: "index_professor_students_on_student_id"
-  end
-
-  create_table "professors", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
-    t.string "speciality"
-  end
-
   create_table "rides", force: :cascade do |t|
     t.string "name"
     t.integer "thrill_rating"
     t.boolean "open"
   end
 
-  create_table "students", force: :cascade do |t|
-    t.string "name"
-    t.integer "age"
-  end
-
   add_foreign_key "mechanic_rides", "mechanics"
   add_foreign_key "mechanic_rides", "rides"
-  add_foreign_key "professor_students", "professors"
-  add_foreign_key "professor_students", "students"
 end
