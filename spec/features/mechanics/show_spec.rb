@@ -13,7 +13,7 @@ RSpec.describe "mechanics show page", type: :feature do
     @mech_1_ride_3 = MechanicRide.create!(mechanic: @mech_1, ride: @ride_3)
   end
 
-  it "lists an individual mechanic's name, years of experience, and name of ride they're working on" do
+  xit "lists an individual mechanic's name, years of experience, and name of ride they're working on" do
     visit "/mechanics/#{@mech_1.id}"
 
     expect(page).to have_content(@mech_1.name)
@@ -23,9 +23,14 @@ RSpec.describe "mechanics show page", type: :feature do
     expect(page).to have_content(@ride_3.name)
   end
 
-  xit "lists the average years of experience of all the mechanics" do
-    visit "/mechanics"
+  it "lists only open rides" do
+    visit "/mechanics/#{@mech_1.id}"
 
-    expect(page).to have_content("Average Years of Experience: 6")
+    save_and_open_page
+
+    within("#open_rides") do
+      expect(page).to have_content(@ride_1.name)
+      expect(page).to have_content(@ride_3.name)
+    end
   end
 end

@@ -3,3 +3,10 @@
 <% @mechanic.working_on_rides.each do |ride| %>
   <%= ride.name %>
 <% end %>
+
+<section id="open_rides">
+  <% @mechanic.open_rides.each do |ride| %>
+    <%= binding.pry %>
+    <%= ride.name %><br>
+  <% end %>
+</section>

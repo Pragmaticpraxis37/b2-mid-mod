@@ -9,4 +9,8 @@ class Mechanic < ApplicationRecord
   def working_on_rides
     rides.select("name")
   end
+
+  def open_rides
+    rides.where("open = ?", true)
+  end
 end
